@@ -1,3 +1,5 @@
+%!TEX encoding = UTF-8 Unicode
+
 \NeedsTeXFormat{LaTeX2e}
 \LoadClassWithOptions{article}
 \ProvidesClass{homework}[2014/12/16 Class file for homework assignments]
@@ -15,6 +17,8 @@
 
 % Better fonts with accents
 \RequirePackage[T1]{fontenc}
+\RequirePackage[USenglish,french]{babel}
+\RequirePackage{lmodern}
 
 % Required for starred commands
 \RequirePackage{suffix}
@@ -47,6 +51,11 @@
 
 % Links
 \RequirePackage{hyperref}
+
+% Definition of the `hyperref` package parameters
+\hypersetup{plainpages=false,%
+            breaklinks=false,%
+            colorlinks=true}
 
 % ----- Questions -------------------------------------------------------------
 \newcounter{questionCounter}
