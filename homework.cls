@@ -11,6 +11,8 @@
 \DeclareOption{newpage}{\renewcommand\@opnewpage{1}}
 \newcommand\@oplargemargins{0}
 \DeclareOption{largemargins}{\renewcommand\@oplargemargins{1}}
+\newcommand\@opindex{0}
+\DeclareOption{index}{\renewcommand\@opindex{1}}
 \ProcessOptions
 
 % ----- Packages --------------------------------------------------------------
@@ -48,6 +50,9 @@
 % Header & Page Setup
 \RequirePackage{fancyhdr}
 \ifthenelse{\equal{\@oplargemargins}{1}}{}{\RequirePackage{fullpage}}
+
+% Indices
+\ifthenelse{\equal{\@opindex}{1}}{\RequirePackage{imakeidx}}{}
 
 % Links
 \RequirePackage{hyperref}
