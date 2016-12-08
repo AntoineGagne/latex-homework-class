@@ -13,7 +13,7 @@
 \DeclareOption{largemargins}{\renewcommand\@oplargemargins{1}}
 \newcommand\@opindex{0}
 \DeclareOption{index}{\renewcommand\@opindex{1}}
-\ProcessOptions
+\ProcessOptions%
 
 % ----- Packages --------------------------------------------------------------
 
@@ -43,6 +43,9 @@
 \RequirePackage{wrapfig}
 \RequirePackage{fancyvrb}
 \RequirePackage{listings}
+
+% Translations
+\RequirePackage{translations}
 
 % Conditionals
 \RequirePackage{ifthen}
@@ -138,9 +141,21 @@
   \begin{description}
 }{\end{description}}
 
-\newcommand{\basecase}{\item[Base Case]\mbox{}\\}
-\newcommand{\indhyp}{\item[Induction Hypothesis]\mbox{}\\}
-\newcommand{\indstep}{\item[Induction Step]\mbox{}\\}
+\DeclareTranslationFallback{induction-base-case}{Base Case}
+\DeclareTranslation{English}{induction-base-case}{Base Case}
+\DeclareTranslation{French}{induction-base-case}{Cas de base}
+\DeclareTranslationFallback{induction-hypothesis}{Induction Hypothesis}
+\DeclareTranslation{English}{induction-hypothesis}{Induction Hypothesis}
+\DeclareTranslation{French}{induction-hypothesis}{Hypoth\`{e}se d'induction}
+\DeclareTranslationFallback{induction-step}{Induction Step}
+\DeclareTranslation{English}{induction-step}{Induction Step}
+\DeclareTranslation{French}{induction-step}{Pas d'induction}
+\newcommand{\thebasecase}{\GetTranslation{induction-base-case}}
+\newcommand{\theindhyp}{\GetTranslation{induction-hypothesis}}
+\newcommand{\theindstep}{\GetTranslation{induction-step}}
+\newcommand{\basecase}{\item[\thebasecase]\mbox{}\\}
+\newcommand{\indhyp}{\item[\theindhyp]\mbox{}\\}
+\newcommand{\indstep}{\item[\theindstep]\mbox{}\\}
 
 % ----- Answer Box ------------------------------------------------------------
 
