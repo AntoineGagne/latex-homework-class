@@ -229,3 +229,55 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % -----------------------------------------------------------------------------
+% Defines the highlighting for the programming languages
+\lstdefinestyle{custom}{
+  basicstyle=\footnotesize\ttfamily,
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\ttfamily\color{gray},
+  identifierstyle=\color{blue},
+  keywordstyle=\bfseries\color{green!40!black},
+  language=Python,
+  numbers=left,
+  numbersep=0.5pt,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
+  stringstyle=\color{orange},
+  tabsize=4,
+  xleftmargin=\parindent,
+}
+
+% Defines the UTF8 characters and their associated values
+\lstset{literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1
+}
+
+% Use the custom style defined earlier
+\lstset{escapechar=@, style=custom}
+
+% Adds translations
+\DeclareTranslationFallback{listing-table-name}{List of programs}
+\DeclareTranslation{English}{listing-table-name}{List of programs}
+\DeclareTranslation{French}{listing-table-name}{Liste des programmes}
+
+\DeclareTranslationFallback{program-caption}{Program}
+\DeclareTranslation{English}{program-caption}{Program}
+\DeclareTranslation{French}{program-caption}{Programme}
+
+% Changes the name of the list of listings and the listings caption
+\renewcommand\lstlistlistingname{\GetTranslation{listing-table-name}}
+\renewcommand\lstlistingname{\GetTranslation{program-caption}}
+% -----------------------------------------------------------------------------
