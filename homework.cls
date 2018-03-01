@@ -21,6 +21,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[USenglish,french]{babel}
 \RequirePackage{lmodern}
+\RequirePackage{caption}
 
 % Required for starred commands
 \RequirePackage{suffix}
@@ -184,7 +185,7 @@
     \setlength{\headheight}{15.2pt}
     \setlength{\headsep}{0.2in}
     \lhead{\hwclass{} \hwlecture\hwsection}%
-    \chead{\hwname{} (\hwemail)}%
+    \chead{\hwname{}}%
     \rhead{\hwtype{} \hwnum}%
 
     % Setup hrule in header
@@ -277,7 +278,12 @@
 \DeclareTranslation{English}{program-caption}{Program}
 \DeclareTranslation{French}{program-caption}{Programme}
 
+\DeclareTranslationFallback{table-caption-name}{Table}
+\DeclareTranslation{English}{table-caption-name}{Table}
+\DeclareTranslation{French}{table-caption-name}{Tableau}
+
 % Changes the name of the list of listings and the listings caption
 \renewcommand\lstlistlistingname{\GetTranslation{listing-table-name}}
 \renewcommand\lstlistingname{\GetTranslation{program-caption}}
+\captionsetup[table]{name=\textsc{\GetTranslation{table-caption-name}}}
 % -----------------------------------------------------------------------------
