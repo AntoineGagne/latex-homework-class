@@ -55,6 +55,9 @@
 \RequirePackage{fancyhdr}
 \ifthenelse{\equal{\@oplargemargins}{1}}{}{\RequirePackage{fullpage}}
 
+% Colors
+\RequirePackage{xcolor}
+
 % Indices
 \ifthenelse{\equal{\@opindex}{1}}{\RequirePackage{imakeidx}}{}
 
@@ -229,25 +232,37 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+\definecolor{red}{HTML}{CC241D}
+\definecolor{green}{HTML}{98971A}
+\definecolor{aqua}{HTML}{689D6A}
+\definecolor{blue}{HTML}{458588}
+\definecolor{darkblue}{HTML}{076678}
+\definecolor{gray}{HTML}{928374}
+\definecolor{fg}{HTML}{3C3836}
+\definecolor{bg}{HTML}{FBF1C7}
+
 % -----------------------------------------------------------------------------
 % Defines the highlighting for the programming languages
 \lstdefinestyle{custom}{
-  basicstyle=\footnotesize\ttfamily,
-  belowcaptionskip=1\baselineskip,
-  breaklines=true,
-  captionpos=b,
-  commentstyle=\ttfamily\color{gray},
-  identifierstyle=\color{blue},
-  keywordstyle=\bfseries\color{green!40!black},
-  language=Python,
-  numbers=left,
-  numbersep=0.5pt,
-  showstringspaces=false,
-  showtabs=false,
-  stepnumber=1,
-  stringstyle=\color{orange},
-  tabsize=4,
-  xleftmargin=\parindent,
+    backgroundcolor=\color{white},
+    basicstyle=\footnotesize\ttfamily\color{fg},
+    belowcaptionskip=1\baselineskip,
+    breakatwhitespace=true,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\ttfamily\color{gray},
+    identifierstyle=\color{darkblue},
+    keywordstyle=\bfseries\color{red},
+    language=Python,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    showstringspaces=false,
+    showtabs=false,
+    stepnumber=1,
+    stringstyle=\color{green},
+    tabsize=4,
+    xleftmargin=\parindent,
 }
 
 % Defines the UTF8 characters and their associated values
