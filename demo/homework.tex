@@ -3,129 +3,62 @@
 \documentclass[11pt,largemargins]{homework}
 \usepackage[utf8]{inputenc}
 
-\newcommand{\hwname}{blah bééééà}
-\newcommand{\hwemail}{jezimmer}
+\newcommand{\hwname}{John Smith}
+\newcommand{\hwemail}{john.smith@john.smith.com}
 \newcommand{\hwtype}{Homework}
 \newcommand{\hwnum}{0}
 \newcommand{\hwclass}{12-345}
 \newcommand{\hwlecture}{0}
 \newcommand{\hwsection}{Z}
 
-% This is just used to generate filler content. You don't need it in an actual
-% homework!
 \usepackage{lipsum}
 
 \begin{document}
 \maketitle
 
-\question
-  This is my answer to the first question.
+\question%
 
-  Don't forget to fill in your personal and class information at the top!
+This is my answer to the first question.
+Don't forget to fill in your personal and class information at the top!
 
-\question
-  This question's number will be auto-incremented.
+\question%
 
-  \lipsum[2]
+This question's number will be auto-incremented.
 
-\question*{Super Fancy Named Question}
-  This question was given a fancy name!
+\lipsum[2]
 
-  \lipsum[3]
+\question*{A Named Question}
 
-% Sometimes questions get separated from their bodies. Use a \newpage to force
-% them to wrap to the next page.
-\newpage
-\question
-  Using the \texttt{induction} environment is a great way to typeset induction proofs!
-  \begin{induction}
-    \basecase
-      Here I have my base case.
-      This is usually about 1-2 lines of text that is not entirely difficult to come up with.
-      That doesn't mean it's not important though!
-    \indhyp
-      Assume cool things to make proof work. Look, math:
-      \[a^2 + b^2 = c^2\]
-    \indstep
-      Prove all the things.  When in doubt, write in Latin, because things
-      written in Latin sound more true.  Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Maecenas tempor risus in dapibus aliquam. Donec at
-      euismod dui. In libero turpis, blandit quis vestibulum ac, rutrum sit amet
-      est. Suspendisse nec lacus vel dui lobortis lacinia at sit amet risus.
-      Fusce dui ex, imperdiet nec finibus ut, bibendum a lacus.
-  \end{induction}
+\lipsum[3]
 
-  Therefore, we have proven the claim by induction in the \texttt{induction} environment.
+\question*{An induction proof}
 
-\question
-  Use the arabicparts environment to include the questionCounter number in the list.
-  \begin{arabicparts}
-    \item Use \LaTeX
-    \item ???
-    \item Profit!
-  \end{arabicparts}
+\begin{induction}
+    \basecase%
+    \indhyp%
+    \indstep%
+\end{induction}
 
-  \lipsum[7]
+\question*{An arabic part}
 
-\question
-  Use the alphaparts environment to for letters instead of numbers.
-  \begin{alphaparts}
-    \item
-      Use \LaTeX
+\begin{arabicparts}
+    \item Example 1
+    \item Example 2
+\end{arabicparts}
 
-      \lipsum[8]
-    \item ???
-    \item Profit!
-  \end{alphaparts}
+\question*{An alpha part}
 
-\question
-  Question numbers continue to auto-increment, regardless of question type.
+\begin{alphaparts}
+    \item Example 1
+    \item Example 2
+\end{alphaparts}
 
-  \lipsum[4]
+\renewcommand{\questiontype}{Task\ }
+\question%
 
-% Use \renewcommand{\questiontype}{<text>} to change what word is displayed
-% before numbered questions
-\renewcommand{\questiontype}{Task}
-\question
-  This question has a different question type!
+\renewcommand{\questiontype}{Question\ }
 
-  \lipsum[5]
-
-\renewcommand{\questiontype}{Question}
-
-\question
-  You can still do things like nesting lists inside of these environments.
-  \begin{alphaparts}
-    \item Use \LaTeX
-      \begin{enumerate}
-        \item Open terminal
-        \item Open vim
-        \item Write LaTeX
-      \end{enumerate}
-    \item ???
-    \item Profit!
-  \end{alphaparts}
-
-  \lipsum[9]
-
-% Use the \setcounter{questionCounter}{<x>} to force the question number to a
-% particular question. If your written homework's question start at number 9001,
-% use the following
-\setcounter{questionCounter}{9000}
-\question
-  \href{https://www.youtube.com/watch?v=SiMHTK15Pik}{It's over 9000!!!}
-
-  \lipsum[6]
-
-
-\section{}
-  You can also use the \texttt{section} macro for starting a question.
-
-  \lipsum[10]
-
-\section*{Using the \texttt{section} Macro}
-  The starred \texttt{section*} works as well.
-
-  \lipsum[11]
+\setcounter{section}{42}
+\question%
 
 \end{document}

@@ -1,7 +1,6 @@
-DEMO_PDF = demo/homework.pdf \
-		   demo/template.pdf
-DEMO_SRC = demo/homework.tex \
-		   demo/template.tex
+DEMO_DIR := demo
+DEMO_PDF = $(addprefix demo/, homework.pdf)
+DEMO_SRC = $(addprefix demo/, homework.tex)
 
 SOURCE_DIR := source
 DESTDIR     ?= $(shell kpsewhich -var-value=TEXMFHOME)
@@ -10,7 +9,7 @@ PACKAGE_STY := $(addprefix $(INSTALL_DIR)/, )
 PACKAGE_CLASSES := $(addprefix $(INSTALL_DIR)/, homework.cls)
 
 CACHE_DIR   := $(shell pwd)/.latex-cache
-COMPILE_TEX := latexmk -pdf -output-directory=$(CACHE_DIR)
+COMPILE_TEX := latexmk -f -pdf -output-directory=$(CACHE_DIR)
 
 .PHONY: all demo doc install uninstall ctan clean-cache clean
 
@@ -42,9 +41,9 @@ demo: $(DEMO_PDF)
 $(CACHE_DIR):
 	@mkdir -p $(CACHE_DIR)
 
-$(DEMO_PDF): $(DEMO_SRC) | clean-cache $(CACHE_DIR)
-	@cd $(dir $(DEMO_SRC)) && $(COMPILE_TEX) $(notdir $(DEMO_SRC))
-	@cp $(CACHE_DIR)/$(notdir $(DEMO_PDF)) $(DEMO_PDF) 
+$(DEMO_DIR)/%.pdf: $(DEMO_DIR)/%.tex | clean-cache $(CACHE_DIR)
+	$(COMPILE_TEX) $<
+	@cp $(CACHE_DIR)/$(notdir $@) $@
 
 check: create_build_dir
 	find . -name *.tex -exec chktex {} \; | tee "$(CACHE_DIR)/lint.out"

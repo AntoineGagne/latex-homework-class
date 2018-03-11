@@ -7,8 +7,6 @@
 % ----- Options ---------------------------------------------------------------
 \newcommand\@opanon{0}
 \DeclareOption{anonymous}{\renewcommand\@opanon{1}}
-\newcommand\@opnewpage{0}
-\DeclareOption{newpage}{\renewcommand\@opnewpage{1}}
 \newcommand\@oplargemargins{0}
 \DeclareOption{largemargins}{\renewcommand\@oplargemargins{1}}
 \newcommand\@opindex{0}
@@ -85,7 +83,6 @@
 }%
 {0pt}%
 {%
-    \ifthenelse{\equal{\@opnewpage}{1}}{\newpage}{}%
     \def\sectionname{#1}
     \ifx\sectionname\empty%
     \else%

@@ -20,7 +20,7 @@ Installation
 
 To install this class, you can simply do:
 
-::
+.. code:: shell
 
     make install
 
@@ -30,7 +30,7 @@ This will install it in the path returned by ``kpsewhich
 Usage
 =====
 
-See the `homework.tex <homework.tex>`__ file for an exhaustive list of
+See the `homework.tex <demo/homework.tex>`__ file for an exhaustive list of
 usage examples. There are also comments explaining features for which
 there are no examples given.
 
@@ -39,12 +39,10 @@ The result is the following:
 .. figure:: screenshot.png
    :alt: Screenshot
 
-   Screenshot
-
 The class file also has a bunch of helper ``\usepackage``\ s that you
-might want to take a look at in `homework.cls <homework.cls>`__.
+might want to take a look at in `homework.cls <source/homework.cls>`__.
 
-For your convenience, the file `template.tex <template.tex>`__ is a
+For your convenience, the file `template.tex <demo/template.tex>`__ is a
 nearly-empty LaTeX file that contains the bare essentials to get started
 using the homework class.
 
@@ -138,16 +136,6 @@ page, include the ``anonymous`` option in the ``\documentclass`` line:
 
 For truly anonymous submissions, make sure you remove all personally
 identifying information from your preamble.
-
-One question per page
----------------------
-
-If you’d like each question to begin on a new page, include the
-``newpage`` option:
-
-.. code:: latex
-
-    \documentclass[11pt,newpage]{homework}
 
 Spacious margins
 ----------------
