@@ -1,29 +1,53 @@
-TARGET=homework
+DEMO_PDF = demo/homework.pdf \
+		   demo/template.pdf
+DEMO_SRC = demo/homework.tex \
+		   demo/template.tex
 
-all: $(TARGET).pdf
+SOURCE_DIR := source
+DESTDIR     ?= $(shell kpsewhich -var-value=TEXMFHOME)
+INSTALL_DIR = $(DESTDIR)/tex/latex/homework
+PACKAGE_STY := $(addprefix $(INSTALL_DIR)/, )
+PACKAGE_CLASSES := $(addprefix $(INSTALL_DIR)/, homework.cls)
 
-## Generalized rule: how to build a .pdf from each .tex
-%.pdf: %.tex $(TARGET).cls
-	pdflatex -interaction nonstopmode $<
+CACHE_DIR   := $(shell pwd)/.latex-cache
+COMPILE_TEX := latexmk -pdf -output-directory=$(CACHE_DIR)
 
-touch:
-	touch *.tex
+.PHONY: all demo doc install uninstall ctan clean-cache clean
 
-again: touch all
+all: demo
+
+clean: clean-cache
+
+clean-cache:
+	@rm -rf "$(CACHE_DIR)"
+
+install: $(PACKAGE_CLASSES) $(PACKAGE_STY)
+
+$(INSTALL_DIR)/%.sty: $(SOURCE_DIR)/%.sty | $(INSTALL_DIR)
+	@cp $< $@
+
+$(INSTALL_DIR)/%.cls: $(SOURCE_DIR)/%.cls | $(INSTALL_DIR)
+	@cp $< $@
+
+$(INSTALL_DIR):
+	@mkdir -p $(INSTALL_DIR)
+
+uninstall:
+	@rm -f "$(addprefix $(INSTALL_DIR)/, $(PACKAGE_STY))"
+	@rm -f "$(addprefix $(INSTALL_DIR)/, $(PACKAGE_CLASSES))"
+	@rmdir "$(INSTALL_DIR)"
+
+demo: $(DEMO_PDF)
+
+$(CACHE_DIR):
+	@mkdir -p $(CACHE_DIR)
+
+$(DEMO_PDF): $(DEMO_SRC) | clean-cache $(CACHE_DIR)
+	@cd $(dir $(DEMO_SRC)) && $(COMPILE_TEX) $(notdir $(DEMO_SRC))
+	@cp $(CACHE_DIR)/$(notdir $(DEMO_PDF)) $(DEMO_PDF) 
+
+check: create_build_dir
+	find . -name *.tex -exec chktex {} \; | tee "$(CACHE_DIR)/lint.out"
 
 clean:
-	rm -f *.aux *.log *.nav *.out *.snm *.toc *.vrb || true
-
-veryclean: clean
-	rm -f $(TARGET).pdf
-
-view: $(TARGET).pdf
-	if [ "Darwin" = "$(shell uname)" ]; then open $(TARGET).pdf ; else evince $(TARGET).pdf ; fi
-
-submit: $(TARGET).pdf
-	cp $(TARGET).pdf ../
-
-print: $(TARGET).pdf
-	lpr $(TARGET).pdf
-
-.PHONY: all again touch clean veryclean view print
+	rm -rf $(BUILD_DIR)
