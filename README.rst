@@ -36,7 +36,7 @@ there are no examples given.
 
 The result is the following:
 
-.. figure:: screenshot.png
+.. figure:: screenshots/screenshot.png
    :alt: Screenshot
 
 The class file also has a bunch of helper ``\usepackage``\ s that you
