@@ -50,9 +50,11 @@
 
 % Conditionals
 \RequirePackage{ifthen}
+\RequirePackage{xparse}
 
 % Header & Page Setup
 \RequirePackage{fancyhdr}
+\RequirePackage[explicit]{titlesec}
 \ifthenelse{\equal{\@oplargemargins}{1}}{}{\RequirePackage{fullpage}}
 
 % Colors
@@ -70,62 +72,47 @@
             colorlinks=true}
 
 % ----- Questions -------------------------------------------------------------
-\newcounter{questionCounter}
-\newcounter{partCounter}[questionCounter]
-
 % Prefix for questions
-\newcommand{\questiontype}[0]{Question}
+\newcommand{\questiontype}[0]{Question\ }
+\newcommand{\oldquestiontype}[0]{\questiontype}
 
-% Use this if your "written" questions are all under one section
-% For example, if the homework handout has Section 5: Written Questions
-% and all questions are 5.1, 5.2, 5.3, etc. set this to 5
-% Use for 0 no prefix. Redefine as needed per-question.
-\newcommand{\writtensection}[0]{0}
+\titleformat%
+{\section}%
+[hang]%
+{\normalfont\bfseries}%
+{%
+    \bf\questiontype\arabic{section}.%
+}%
+{0pt}%
+{%
+    \ifthenelse{\equal{\@opnewpage}{1}}{\newpage}{}%
+    \def\sectionname{#1}
+    \ifx\sectionname\empty%
+    \else%
+        \sectionname%
+    \fi
+}%
+[%
+    \vspace{0.1em}%
+    \titlerule%
+]
 
-% Numbered question
-\providecommand{\question}{}
-\renewcommand{\question}[0]{%
-  % Emit \newpage if option `newpage` is present
-  \ifthenelse{\equal{\@opnewpage}{1}}{%
-    \newpage
-  }{}
-
-  % Wrap in minipage so that we don't get a line break enywhere in between
-  \begin{minipage}{\linewidth}%
-    \stepcounter{questionCounter}%
-      \vspace{.2in}%
-      \ifx\writtensection\undefined{}
-        \noindent{\bf \questiontype\ \arabic{questionCounter}.}%
-        \else
-          \if\writtensection0
-          \noindent{\bf \questiontype\ \arabic{questionCounter}.}%
-          \else
-          \noindent{\bf \questiontype\ \writtensection.\arabic{questionCounter}}%
-        \fi
-      \vspace{0.3em} \hrule \vspace{.1in}%
-  \end{minipage}
+\DeclareDocumentCommand{\question}{o}{%
+    \IfNoValueTF{#1}{%
+        \section[\questiontype\arabic{section}]{}
+    }{%
+        \section[#1]{}
+    }
 }
-
-% Named question, takes one argument
-\WithSuffix\providecommand\question*{}
-\WithSuffix\renewcommand\question*[1]{%
-  % Emit \newpage if option `newpage` is present
-  \ifthenelse{\equal{\@opnewpage}{1}}{%
-    \newpage%
-  }{}%
-  % Wrap in minipage so that we don't get a line break enywhere in between
-  \begin{minipage}{\linewidth}%
-    \addtocounter{questionCounter}{1}%
-    \setcounter{partCounter}{0}%
-    \vspace{.2in}%
-    \noindent{\bf \arabic{questionCounter}. #1}%
-    \vspace{0.3em} \hrule \vspace{.1in}%
-  \end{minipage}
+\WithSuffix\newcommand\question*[1]{%
+    \renewcommand{\questiontype}{}
+    \section{#1}
+    \renewcommand{\questiontype}{\oldquestiontype}
 }
 
 % Override normal section defintions
-\renewcommand{\section}[0]{\question}
-\WithSuffix\newcommand\section*[1]{\question*{#1}}
+% \renewcommand{\section}[0]{\question}
+% \WithSuffix\newcommand\section*[1]{\question*{#1}}
 
 % ----- Question Parts --------------------------------------------------------
 
@@ -134,7 +121,7 @@
 }{\end{enumerate}}
 
 \newenvironment{arabicparts}[0]{%
-  \begin{enumerate}[label=\textbf{\arabic{questionCounter}.\arabic*})]%
+  \begin{enumerate}[label=\textbf{\arabic{section}.\arabic*})]%
 }{\end{enumerate}}
 
 \newcommand{\questionpart}[0]{\item}
