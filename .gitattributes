@@ -1,0 +1,7 @@
+*.bib   eol=lf   diff=bibtex
+*.tex   eol=lf   diff=tex
+
+*.jpg  binary
+*.pdf  binary
+*.png  binary
+*.jpeg binary
