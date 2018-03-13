@@ -17,7 +17,7 @@
 
 % Better fonts with accents
 \RequirePackage[T1]{fontenc}
-\RequirePackage[USenglish,french]{babel}
+\RequirePackage[french]{babel}
 \RequirePackage{lmodern}
 \RequirePackage{caption}
 
