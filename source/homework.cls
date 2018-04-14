@@ -169,15 +169,11 @@
 \ifthenelse{\equal{\@opanon}{0}}{%
   \renewcommand{\maketitle}[0]{%
     % Setup header
-    \setlength{\headheight}{15.2pt}
-    \setlength{\headsep}{0.2in}
-    \lhead{\hwclass{} \hwlecture\hwsection}%
-    \chead{\hwname{}}%
-    \rhead{\hwtype{} \hwnum}%
+    \fancyhf{}
+    \fancyhead[LE,RO]{\small\hwname{}}
+    \fancyhead[RE,LO]{\thepage}%
 
     % Setup hrule in header
-    \renewcommand{\headrulewidth}{0pt}
-    \headrule{}
 
     % Don't put header on first page
     \thispagestyle{plain}
@@ -185,11 +181,12 @@
     \begin{center}
       {\Large \hwclass{} \hwtype{} \hwnum}
 
-      \hwname{} (\hwemail)
+        \textsc{\hwname{}}
+
+        \hwemail{}
 
       \today
     \end{center}
-    \renewcommand{\headrulewidth}{0.4pt}
   }
 
 }%
@@ -206,7 +203,6 @@
 
       \today
     \end{center}
-    \renewcommand{\headrulewidth}{0.4pt}
     \newpage
   }
 }
