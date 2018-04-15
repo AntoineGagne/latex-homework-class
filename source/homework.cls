@@ -67,19 +67,21 @@
 % Definition of the `hyperref` package parameters
 \hypersetup{plainpages=false,%
             breaklinks=false,%
+            pdfencoding=auto,%
+            psdextra,%
             colorlinks=true}
 
 % ----- Questions -------------------------------------------------------------
 % Prefix for questions
-\newcommand{\questiontype}[0]{Question\ }
-\newcommand{\oldquestiontype}[0]{\questiontype}
+\def\questiontype#1{\def\thequestiontype{#1}}
+\def\thequestiontype{Question\ }
 
 \titleformat%
 {\section}%
 [hang]%
 {\normalfont\bfseries}%
 {%
-    \bf\questiontype\arabic{section}.%
+    \bf\thequestiontype\arabic{section}.%
 }%
 {0pt}%
 {%
@@ -96,15 +98,15 @@
 
 \DeclareDocumentCommand{\question}{o}{%
     \IfNoValueTF{#1}{%
-        \section[\questiontype\arabic{section}]{}
+        \section[\thequestiontype\arabic{section}]{}
     }{%
         \section[#1]{}
     }
 }
 \WithSuffix\newcommand\question*[1]{%
-    \renewcommand{\questiontype}{}
+    \questiontype{}
     \section{#1}
-    \renewcommand{\questiontype}{\oldquestiontype}
+    \questiontype{Question\ }
 }
 
 % Override normal section defintions
