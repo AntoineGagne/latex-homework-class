@@ -159,6 +159,8 @@
 % Use block style paragraphs
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt plus 1pt}
+\setlength{\headheight}{15.2pt}
+\setlength{\headsep}{25pt}
 
 \def\indented#1{\list{}{}\item[]}
 \let\indented=\endlist
@@ -178,7 +180,7 @@
     % Setup hrule in header
 
     % Don't put header on first page
-    \thispagestyle{plain}
+    \thispagestyle{empty}
 
     \begin{center}
       {\Large \hwclass{} \hwtype{} \hwnum}
@@ -195,7 +197,7 @@
 {%
   \renewcommand{\maketitle}[0]{%
     % Make all pages plain
-    \pagestyle{plain}
+    \thispagestyle{empty}
 
     % Put header on it's own page
     \begin{center}
