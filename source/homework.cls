@@ -109,10 +109,6 @@
     \questiontype{Question\ }
 }
 
-% Override normal section defintions
-% \renewcommand{\section}[0]{\question}
-% \WithSuffix\newcommand\section*[1]{\question*{#1}}
-
 % ----- Question Parts --------------------------------------------------------
 
 \newenvironment{alphaparts}[0]{%
@@ -217,11 +213,21 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \definecolor{red}{HTML}{CC241D}
+\definecolor{darkred}{HTML}{9D0006}
 \definecolor{green}{HTML}{98971A}
-\definecolor{aqua}{HTML}{689D6A}
+\definecolor{darkgreen}{HTML}{79740E}
+\definecolor{yellow}{HTML}{D79921}
+\definecolor{darkyellow}{HTML}{B57614}
 \definecolor{blue}{HTML}{458588}
 \definecolor{darkblue}{HTML}{076678}
+\definecolor{purple}{HTML}{B16286}
+\definecolor{darkpurple}{HTML}{8F3F71}
+\definecolor{aqua}{HTML}{689D6A}
+\definecolor{darkaqua}{HTML}{427B58}
 \definecolor{gray}{HTML}{928374}
+\definecolor{darkgray}{HTML}{7C9F64}
+\definecolor{orange}{HTML}{D65D0E}
+\definecolor{darkorange}{HTML}{AF3A03}
 \definecolor{fg}{HTML}{3C3836}
 \definecolor{bg}{HTML}{FBF1C7}
 
